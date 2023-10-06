@@ -14,12 +14,13 @@ import { v4 } from "uuid";
 import Link from "next/link";
 import Carousel from "./components/Carousel";
 
-
-
-const getProducts = async() => {
-  const products = await fetch('https://www.screentechnicals.com/api/ecommerce/products', { next: { revalidate: 10 } });
+const getProducts = async () => {
+  const products = await fetch(
+    "https://www.screentechnicals.com/api/ecommerce/products",
+    { next: { revalidate: 10 } }
+  );
   return products.json();
-}
+};
 
 export default async function Page() {
   const products = await getProducts();
@@ -61,7 +62,6 @@ export default async function Page() {
       category: "game",
     },
   ];
-  
 
   return (
     <div className="w-full overflow-x-hidden">
@@ -76,9 +76,9 @@ export default async function Page() {
           </p>
           <div>
             <Link href={"/products"}>
-            <button className="px-4 py-2 text-lg bg-white text-black rounded-md capitalize">
-              browse products
-            </button>
+              <button className="px-4 py-2 text-lg bg-white text-black rounded-md capitalize">
+                browse products
+              </button>
             </Link>
           </div>
         </div>
@@ -108,7 +108,9 @@ export default async function Page() {
         </div>
       </div>
       <div>
-        <h1 className="text-center font-bold text-3xl pt-10 pb-5">Hot Deals 🔥</h1>
+        <h1 className="text-center font-bold text-3xl pt-10 pb-5">
+          Hot Deals 🔥
+        </h1>
         <div className="w-full px-10">
           <Carousel products={products} />
         </div>
