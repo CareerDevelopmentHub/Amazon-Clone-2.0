@@ -4,7 +4,7 @@ import Card from "../../components/Card";
 
 const getProducts = async () => {
   const products = await fetch(
-    "https://www.screentechnicals.com/api/ecommerce/products",
+   "http://localhost:3000/api/products",
     { next: { revalidate: 10 } }
   );
   return products.json();
@@ -17,8 +17,8 @@ const Page = async ({ params }) => {
     <div className="w-full flex justify-center items-center flex-wrap">
       {products.map((item) => {
         if (
-          item.name.toLowerCase().includes(search.toLowerCase()) ||
-          item.category.toLowerCase().includes(search.toLowerCase())
+          item.name.toLowerCase().includes(decodeURI(search).toLowerCase()) ||
+          item.category.toLowerCase().includes(decodeURI(search).toLowerCase())
         ) {
           return (
             <Link key={item.id} href={`/products/${item.id}`}>

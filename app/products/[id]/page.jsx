@@ -5,7 +5,7 @@ import Buttons from "../../components/Buttons";
 
 const getProduct = async (id) => {
   const products = await fetch(
-    `https://www.screentechnicals.com/api/ecommerce/products/${id}`,
+    `http://localhost:3000/api/products/${id}`,
     { next: { revalidate: 10 } }
   );
   return products.json();
