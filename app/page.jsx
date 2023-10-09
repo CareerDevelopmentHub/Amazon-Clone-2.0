@@ -16,7 +16,7 @@ import Carousel from "./components/Carousel";
 
 const getProducts = async () => {
   const products = await fetch(
-    "https://www.screentechnicals.com/api/ecommerce/products",
+    `http://localhost:3000/api/products`,
     { next: { revalidate: 10 } }
   );
   return products.json();
